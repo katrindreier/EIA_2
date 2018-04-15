@@ -1,5 +1,6 @@
 var Aufgabe2;
 (function (Aufgabe2) {
+    let x = 0;
     let numberPlayers;
     let numPlayers = 0;
     let numberPairs;
@@ -10,6 +11,7 @@ var Aufgabe2;
     document.addEventListener("DOMContentLoaded", SelectPlayers);
     document.addEventListener("DOMContentLoaded", pushCards);
     document.addEventListener("DOMContentLoaded", CreateCards);
+    document.addEventListener("DOMContentLoaded", CreatePlayers);
     function SelectPairs() {
         while (numPairs < 5 || numPairs >= 15) {
             numberPairs = prompt("Wie viele Pärchen wollt ihr suchen?", "");
@@ -54,10 +56,11 @@ var Aufgabe2;
         return numPlayers;
     }
     let numCards = SelectPairs();
+    let Players = SelectPlayers();
     function pushCards() {
         let c = 0;
         console.log(cards[c]);
-        while (c < numCards) {
+        while (c <= (numCards * 2)) {
             let content = listContent[c];
             cards.push(content);
             c++;
@@ -84,7 +87,7 @@ var Aufgabe2;
             else if (status == 2) {
                 cardStatus = "taken";
             }
-            console.log("Rote Karte" + " " + cardStatus + " " + num + " " + i);
+            console.log("Karte" + " " + cardStatus + " " + num + " " + i);
             childNodeHTML = "<div  class=" + cardStatus + " id='Card" + i + "'>"; //hier werden Div-Container für die Karten generiert
             childNodeHTML += "<p>";
             childNodeHTML += cards[num];
@@ -92,6 +95,26 @@ var Aufgabe2;
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
             var cardContent = cards[num];
+            console.log(cards);
+            i++;
+        }
+    }
+    function CreatePlayers() {
+        console.log("Los geht's " + Players + " Spieler werden generiert");
+        var node = document.getElementById("Cards");
+        var childNodeHTML;
+        let i = 1;
+        while (Players >= i) {
+            console.log("Spieler" + " " + i);
+            childNodeHTML = "<div class='Player' id='Player" + i + "'>"; //hier werden Div-Container für die Spieler generiert
+            childNodeHTML += "<p>";
+            childNodeHTML += "Spieler";
+            childNodeHTML += i;
+            childNodeHTML += "   Score: ";
+            childNodeHTML += x;
+            childNodeHTML += "</p>";
+            childNodeHTML += " </div> ";
+            node.innerHTML += childNodeHTML;
             console.log(cards);
             i++;
         }

@@ -1,5 +1,5 @@
 namespace Aufgabe2 {
-    let x: number=0;
+
     let numberPlayers: string;
     let numPlayers: number=0;
     let numberPairs: string;
@@ -64,14 +64,14 @@ namespace Aufgabe2 {
              } 
     
   let numCards: number= SelectPairs ();
-  let Players: number= SelectPlayers ();
+  let numPlayers: number= SelectPlayers ();
   
         
     function pushCards () : void {                                                   //hier werden die Karten ins Arrey gepusht
         let c : number = 0
          
         console.log(cards[c]) 
-            while (c <= (numCards*2)) {
+            while (c < numCards) {
                 let content : string = listContent[c];
                 cards.push (content);
 
@@ -130,23 +130,21 @@ namespace Aufgabe2 {
     
     
     function CreatePlayers () : void {
-       console.log("Los geht's " + Players + " Spieler werden generiert");
-       var node : any= document.getElementById("Cards");
+       console.log("Los geht's " + numPlayers + " Spieler werden generiert");
+       var node : any= document.getElementById("Players");
        var childNodeHTML : string;
-       let i: number=1;
+       let i: number=0;
 
             
-             while (Players >= i) {
+             while (numPlayers > i) {
                
              console.log("Spieler" + " " + i );    
             
              
-            childNodeHTML = "<div class='Player' id='Player" + i + "'>";           //hier werden Div-Container für die Spieler generiert
+            childNodeHTML = "<div  class=Player" + i + "'>";           //hier werden Div-Container für die Spieler generiert
             childNodeHTML += "<p>";
             childNodeHTML += "Spieler";     
             childNodeHTML += i;
-            childNodeHTML += "   Score: ";     
-            childNodeHTML += x;
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";      
             node.innerHTML += childNodeHTML;
@@ -160,15 +158,3 @@ namespace Aufgabe2 {
             
         
     }
-        
-  
-
-    
-    
-    
-
-
-
-
-    
-    

@@ -1,28 +1,92 @@
-div {
-	width: 10em;
-	height: 10em;
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+* {
+	font-family: 'Inconsolata', monospace;
+}
+
+
+
+#Cards {
+	background-color: #e0e0eb;
+}
+
+#Cards div {
+	
 	float: left;
 	margin: 1%;
 	font-size: 1em;
-	text-align: center;
 	
 }
 
 
 
 .taken {
+	width: 5em;
+	height: 5em;
 	opacity: 0.1;
 	background-color: #e0e0eb;
+	text-align: center;
 }
 
 .hidden {
+	width: 5em;
+	height: 5em;
 	background-color: #99ccff;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	color: #99ccff;
 }
 
 .open {
+	width: 5em;
+	height: 5em;
 	background-color: white;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	text-align: center;
 	
 }
+
+
+.Player {
+	
+	color: white;
+	clear: left;
+	background-color: #32324e;
+	width: 20em;
+	height: 3em;	
+	padding-left: 1em;
+}
+
+@media screen and (min-width: 48em) {
+	.taken {
+	width: 7em;
+	height: 7em;
+	}
+	
+	.hidden {
+	width: 7em;
+	height: 7em;
+	}
+	
+	.open {
+	width: 7em;
+	height: 7em;
+	}
+}
+
+@media screen and (min-width: 64em) {
+	.taken {
+	width: 10em;
+	height: 7em;
+	}
+	
+	.hidden {
+	width: 10em;
+	height: 10em;
+	}
+	
+	.open {
+	width: 10em;
+	height: 10em;
+	}
+}
+
