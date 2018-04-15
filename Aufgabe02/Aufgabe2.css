@@ -1,0 +1,28 @@
+div {
+	width: 10em;
+	height: 10em;
+	float: left;
+	margin: 1%;
+	font-size: 1em;
+	text-align: center;
+	
+}
+
+
+
+.taken {
+	opacity: 0.1;
+	background-color: #e0e0eb;
+}
+
+.hidden {
+	background-color: #99ccff;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	color: #99ccff;
+}
+
+.open {
+	background-color: white;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	
+}
