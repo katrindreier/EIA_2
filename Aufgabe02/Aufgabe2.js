@@ -1,19 +1,18 @@
 var Aufgabe2;
 (function (Aufgabe2) {
-    let x = 0;
     let numberPlayers;
     let numPlayers = 0;
     let numberPairs;
     let numPairs = 0;
     let cards = [];
-    let listContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O"];
+    let listContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X"];
     document.addEventListener("DOMContentLoaded", SelectPairs);
     document.addEventListener("DOMContentLoaded", SelectPlayers);
     document.addEventListener("DOMContentLoaded", pushCards);
-    document.addEventListener("DOMContentLoaded", CreateCards);
+    document.addEventListener("DOMContentLoaded", createCards);
     document.addEventListener("DOMContentLoaded", CreatePlayers);
     function SelectPairs() {
-        while (numPairs < 5 || numPairs >= 15) {
+        while (numPairs < 5 || numPairs > 15) {
             numberPairs = prompt("Wie viele Pärchen wollt ihr suchen?", "");
             numPairs = parseInt(numberPairs);
             console.log(numPairs + " Paare");
@@ -59,24 +58,26 @@ var Aufgabe2;
     let Players = SelectPlayers();
     function pushCards() {
         let c = 0;
-        console.log(cards[c]);
-        while (c <= (numCards * 2)) {
-            let content = listContent[c];
-            cards.push(content);
+        let content = 0;
+        while (c <= numCards - 1) {
+            cards.push(listContent[c]);
+            cards.push(listContent[c]);
             c++;
-            console.log(cards[c]);
+            console.log(cards);
         }
     }
-    function CreateCards() {
+    function createCards() {
         console.log("Los geht's " + numCards * 2 + " Karten werden generiert.");
         var node = document.getElementById("Cards");
         var childNodeHTML;
         let i = 0;
-        let n = cards.length;
-        while ((numCards * 2) > i) {
-            console.log(n);
+        let n = 0;
+        while ((numCards * 2) >= i) {
+            //alert();
+            //console.log(n);
+            n = cards.length - 1;
             let status = Math.floor(Math.random() * (2 + 1));
-            let num = Math.floor(Math.random() * (n + 1)); //Status der Karte
+            let num = Math.floor(Math.random() * n); //Status der Karte
             let cardStatus;
             if (status == 0) {
                 cardStatus = "hidden";
@@ -90,33 +91,29 @@ var Aufgabe2;
             console.log("Karte" + " " + cardStatus + " " + num + " " + i);
             childNodeHTML = "<div  class=" + cardStatus + " id='Card" + i + "'>"; //hier werden Div-Container für die Karten generiert
             childNodeHTML += "<p>";
-            childNodeHTML += cards[num];
+            childNodeHTML += cards.splice(num, 1);
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
-            var cardContent = cards[num];
-            console.log(cards);
+            console.log("länge " + cards.length);
             i++;
         }
     }
     function CreatePlayers() {
         console.log("Los geht's " + Players + " Spieler werden generiert");
-        var node = document.getElementById("Cards");
+        var node = document.getElementById("Players");
         var childNodeHTML;
-        let i = 1;
-        while (Players >= i) {
-            console.log("Spieler" + " " + i);
-            childNodeHTML = "<div class='Player' id='Player" + i + "'>"; //hier werden Div-Container für die Spieler generiert
+        let p = 0;
+        while (Players > p) {
+            console.log("Spieler" + " " + p);
+            childNodeHTML = "<div  class=Player" + p + "'>"; //hier werden Div-Container für die Spieler generiert
             childNodeHTML += "<p>";
             childNodeHTML += "Spieler";
-            childNodeHTML += i;
-            childNodeHTML += "   Score: ";
-            childNodeHTML += x;
+            childNodeHTML += p;
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
-            console.log(cards);
-            i++;
+            p++;
         }
     }
 })(Aufgabe2 || (Aufgabe2 = {}));

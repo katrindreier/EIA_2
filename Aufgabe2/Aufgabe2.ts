@@ -5,7 +5,7 @@ namespace Aufgabe2 {
     let numberPairs: string;
     let numPairs: number=0;
     let cards: string[]=[];
-    let listContent: string[]=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O"];
+    let listContent: string[]=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X"];
             
     document.addEventListener("DOMContentLoaded", SelectPairs);
     document.addEventListener("DOMContentLoaded", SelectPlayers);
@@ -15,7 +15,7 @@ namespace Aufgabe2 {
  
     function SelectPairs () : number {
         
-        while (numPairs < 5  || numPairs >= 15) {
+        while (numPairs < 5  || numPairs > 15) {
             numberPairs = prompt("Wie viele Pärchen wollt ihr suchen?", "");
             numPairs= parseInt(numberPairs);  
              console.log(numPairs + " Paare")
@@ -64,21 +64,58 @@ namespace Aufgabe2 {
              } 
     
   let numCards: number= SelectPairs ();
-  let numPlayers: number= SelectPlayers ();
+  let Players: number= SelectPlayers ();
   
-        
+  /*
+    function createCards() {
+        var node : any = document.getElementById("Cards");
+        var childNodeHTML : string = "";
+    
+        for (let i: number = 0; i < numCards; i++) {
+            for (let j: number = 0; j < 2; j++) {
+                // let content : string = listContent[i];
+                // cards.push (content);
+                
+    let status: number = Math.floor(Math.random() * (2 + 1));
+             let num: number = Math.floor(Math.random() * (n + 1));                              //Status der Karte
+             let cardStatus: string;    
+                 if (status == 0) {
+                     cardStatus = "hidden"}
+                   
+                 else if (status == 1) {
+                    cardStatus = "open";
+                 }
+            
+                else if (status == 2) {
+                cardStatus = "taken";
+                }
+    
+                childNodeHTML = "<div  class=" + cardStatus + " id='Card" + i + "'>";           //hier werden Div-Container für die Karten generiert
+                 childNodeHTML += "<p>";
+                  childNodeHTML += cards[num];
+            childNodeHTML += "</p>";
+            childNodeHTML += " </div> ";
+                
+            }
+           node.innerHTML += childNodeHTML;
+            
+        }
+    }
+    
+    
+    
+    */
+    
     function pushCards () : void {                                                   //hier werden die Karten ins Arrey gepusht
         let c : number = 0
          
         console.log(cards[c]) 
-            while (c < numCards) {
+            while (c <= numCards) {
                 let content : string = listContent[c];
                 cards.push (content);
-
+                cards.push (content);
                 c++;
                 console.log(cards[c]);     
-                
-            
                 }
                 
             
@@ -130,21 +167,21 @@ namespace Aufgabe2 {
     
     
     function CreatePlayers () : void {
-       console.log("Los geht's " + numPlayers + " Spieler werden generiert");
+       console.log("Los geht's " + Players + " Spieler werden generiert");
        var node : any= document.getElementById("Players");
        var childNodeHTML : string;
-       let i: number=0;
+       let p: number=0;
 
             
-             while (numPlayers > i) {
+             while (Players > p) {
                
-             console.log("Spieler" + " " + i );    
+             console.log("Spieler" + " " + p );    
             
              
-            childNodeHTML = "<div  class=Player" + i + "'>";           //hier werden Div-Container für die Spieler generiert
+            childNodeHTML = "<div  class=Player" + p + "'>";           //hier werden Div-Container für die Spieler generiert
             childNodeHTML += "<p>";
             childNodeHTML += "Spieler";     
-            childNodeHTML += i;
+            childNodeHTML += p;
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";      
             node.innerHTML += childNodeHTML;
@@ -152,7 +189,7 @@ namespace Aufgabe2 {
         
             console.log(cards);
     
-            i++;
+            p++;
            }
        }
             
