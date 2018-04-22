@@ -16,39 +16,39 @@ var Aufgabe2;
         while (numPairs < 5 || numPairs > 15) {
             numberPairs = prompt("Wie viele Pärchen wollt ihr suchen?", "");
             numPairs = parseInt(numberPairs);
-            console.log(numPairs + " Paare");
+            //  console.log(numPairs + " Paare")
             if (numPairs > 15) {
                 numberPairs = prompt("Das sind zu viele, Wie viele Pärchen wollt ihr suchen?", "");
                 numPairs = parseInt(numberPairs);
-                console.log(numPairs + " Paare");
+                //    console.log(numPairs + " Paare")
                 break;
             }
             else if (numPairs < 5) {
                 numberPairs = prompt("Laaaangweilig, Wie viele Pärchen wollt ihr suchen?", "");
                 numPairs = parseInt(numberPairs);
-                console.log(numPairs + " Paare");
+                //   console.log(numPairs + " Paare")
                 break;
             }
             break;
         }
-        console.log(numPairs);
+        //   console.log(numPairs);
         return numPairs;
     }
     function SelectPlayers() {
         while (numPlayers <= 1 || numPlayers >= 5) {
             numberPlayers = prompt("Wie viele seid ihr?", "");
             numPlayers = parseInt(numberPlayers);
-            console.log(numPlayers + " Spieler");
+            //  console.log(numPlayers + " Spieler")
             if (numPlayers > 5) {
                 numberPlayers = prompt("Ihr dürft höchstens zu fünft sein!", "");
                 numPlayers = parseInt(numberPlayers);
-                console.log(numPlayers + " Spieler");
+                //  console.log(numPlayers + " Spieler")
                 break;
             }
             else if (numPlayers < 1) {
                 numberPlayers = prompt("Also einer muss mindestens mitspielen!", "");
                 numPlayers = parseInt(numberPlayers);
-                console.log(numPlayers + " Spieler");
+                //  console.log(numPlayers + " Spieler")
                 break;
             }
             break;
@@ -64,7 +64,6 @@ var Aufgabe2;
             cards.push(listContent[c]);
             cards.push(listContent[c]);
             c++;
-            console.log(cards);
         }
     }
     function createCards() {
@@ -73,16 +72,18 @@ var Aufgabe2;
         var childNodeHTML;
         let i = 0;
         let n = 0;
-        while ((numCards * 2) >= i) {
-            n = cards.length - 1;
+        while ((numCards * 2) > i) {
+            n = cards.length;
             let num = Math.floor(Math.random() * n); //Status der Karte
             console.log("Karte" + " " + cards[num] + " " + i);
-            childNodeHTML = "<div class=hidden" + " id='Card" + cards[num] + "'>"; //hier werden Div-Container für die Karten generiert
+            childNodeHTML = "<div class=hidden" + " id='Card" + i + "'>"; //hier werden Div-Container für die Karten generiert
             childNodeHTML += "<p>";
-            childNodeHTML += cards.splice(num, 1);
+            childNodeHTML += cards[num];
+            // childNodeHTML += cards.splice(num, 1);
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
+            cards.splice(num, 1);
             console.log("länge " + cards.length);
             i++;
         }
@@ -107,18 +108,17 @@ var Aufgabe2;
     let i = 0;
     var karte1;
     var karte2;
+    var karte1Inhalt;
+    var karte2Inhalt;
     function playMemory(karte) {
         var target = karte.target;
         if (target.classList.contains("hidden")) {
             i++;
-            //  console.log ("target " + target); 
             if (i == 1) {
-                //   karte1 = undefined;
-                //  karte2 = undefined;
                 target.className = "open";
+                karte1Inhalt = target.getElementsByTagName('p')[0].innerHTML;
                 karte1 = target.id;
-                //   console.log("karte1 " + karte1);
-                //  console.log ("target " + target); 
+                console.log("Inhalt " + karte1Inhalt + "id " + karte1);
                 i++;
                 document.addEventListener("click", playMemory);
             }
@@ -126,38 +126,28 @@ var Aufgabe2;
                 //   console.log ("target " + target); 
                 target.className = "open";
                 karte2 = target.id;
-                //   console.log("karte2 " + karte2);
+                karte2Inhalt = target.getElementsByTagName('p')[0].innerHTML;
+                console.log("Inhalt " + karte2Inhalt + "id " + karte2);
                 i++;
             }
         }
-        //    console.log (karte1 + " " + karte2)
-        if ((karte1 == karte2) && (i == 4)) {
-            console.log("Du hast ein Pärchen!!");
-            console.log("karte1" + karte1 + document.getElementById(karte1).className);
-            console.log("karte2" + karte2 + document.getElementById(karte2).className);
-            // document.getElementById(karte2).className = "taken";
-            //  target.className = "taken";
-            document.getElementById(karte1).className = "taken";
-            target.className = "taken";
-            i = 0;
-            console.log("karte1" + karte1 + document.getElementById(karte1).className);
-            console.log("karte2" + karte2 + document.getElementById(karte2).className);
-            karte1 = undefined;
-            karte2 = undefined;
-        }
-        if ((karte1 != karte2) && (i == 4)) {
-            console.log("karte1" + karte1 + document.getElementById(karte1).className);
-            console.log("karte2" + karte2 + document.getElementById(karte2).className);
-            document.getElementById(karte1).className = "hidden";
-            //  target.className = "hidden";
-            //  document.getElementById(karte2).className = "hidden";
-            target.className = "hidden";
-            console.log(karte1 + document.getElementById(karte1).className);
-            console.log(karte2 + document.getElementById(karte2).className);
-            karte1 = undefined;
-            karte2 = undefined;
-            i = 0;
-        }
+        setTimeout(() => {
+            if ((karte1Inhalt == karte2Inhalt) && (i == 4)) {
+                console.log("Du hast ein Pärchen!!");
+                document.getElementById(karte2).className = "taken";
+                document.getElementById(karte1).className = "taken";
+                i = 0;
+                karte1 = undefined;
+                karte2 = undefined;
+            }
+            if ((karte1Inhalt != karte2Inhalt) && (i == 4)) {
+                document.getElementById(karte1).className = "hidden";
+                document.getElementById(karte2).className = "hidden";
+                karte1 = undefined;
+                karte2 = undefined;
+                i = 0;
+            }
+        }, 1500);
     }
 })(Aufgabe2 || (Aufgabe2 = {}));
 //# sourceMappingURL=Aufgabe3.js.map

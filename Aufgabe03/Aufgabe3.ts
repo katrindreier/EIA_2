@@ -13,9 +13,9 @@ namespace Aufgabe2 {
     document.addEventListener("DOMContentLoaded", createCards);
     document.addEventListener("DOMContentLoaded", CreatePlayers);
     document.addEventListener("click", playMemory);
-  
 
-    
+  
+     
 
     
 
@@ -24,22 +24,22 @@ namespace Aufgabe2 {
         while (numPairs < 5 || numPairs > 15) {
             numberPairs = prompt("Wie viele Pärchen wollt ihr suchen?", "");
             numPairs = parseInt(numberPairs);
-            console.log(numPairs + " Paare")
+          //  console.log(numPairs + " Paare")
             if (numPairs > 15) {
                 numberPairs = prompt("Das sind zu viele, Wie viele Pärchen wollt ihr suchen?", "");
                 numPairs = parseInt(numberPairs);
-                console.log(numPairs + " Paare")
+            //    console.log(numPairs + " Paare")
                 break;
             }
             else if (numPairs < 5) {
                 numberPairs = prompt("Laaaangweilig, Wie viele Pärchen wollt ihr suchen?", "");
                 numPairs = parseInt(numberPairs);
-                console.log(numPairs + " Paare")
+             //   console.log(numPairs + " Paare")
                 break;
             }
             break;
         }
-        console.log(numPairs);
+     //   console.log(numPairs);
         return numPairs;
     }
 
@@ -51,17 +51,17 @@ namespace Aufgabe2 {
         while (numPlayers <= 1 || numPlayers >= 5) {
             numberPlayers = prompt("Wie viele seid ihr?", "");
             numPlayers = parseInt(numberPlayers);
-            console.log(numPlayers + " Spieler")
+          //  console.log(numPlayers + " Spieler")
             if (numPlayers > 5) {
                 numberPlayers = prompt("Ihr dürft höchstens zu fünft sein!", "");
                 numPlayers = parseInt(numberPlayers);
-                console.log(numPlayers + " Spieler")
+              //  console.log(numPlayers + " Spieler")
                 break;
             }
             else if (numPlayers < 1) {
                 numberPlayers = prompt("Also einer muss mindestens mitspielen!", "");
                 numPlayers = parseInt(numberPlayers);
-                console.log(numPlayers + " Spieler")
+              //  console.log(numPlayers + " Spieler")
                 break;
             }
             break;
@@ -78,7 +78,7 @@ namespace Aufgabe2 {
 
 
 
-    function pushCards(): void {                                                   //hier werden die Karten ins Arrey gepusht
+    function pushCards(): void {                         //hier werden die Karten ins Array gepusht
         let c: number = 0;
         let content: number = 0;
 
@@ -91,7 +91,7 @@ namespace Aufgabe2 {
            
           
             c++;
-            console.log(cards);
+         //   console.log(cards);
             
         }
 
@@ -106,10 +106,10 @@ namespace Aufgabe2 {
         let n: number = 0;
 
 
-        while ((numCards * 2) >= i) {
+        while ((numCards * 2) > i) {
 
             
-            n = cards.length - 1 ;
+            n = cards.length ;
             
             
             let num: number = Math.floor(Math.random() * n);                              //Status der Karte
@@ -118,13 +118,14 @@ namespace Aufgabe2 {
             console.log("Karte" + " " + cards[num] + " " + i);
 
 
-            childNodeHTML = "<div class=hidden" + " id='Card" + cards[num] + "'>";           //hier werden Div-Container für die Karten generiert
+            childNodeHTML = "<div class=hidden" + " id='Card" + i + "'>";           //hier werden Div-Container für die Karten generiert
             childNodeHTML += "<p>";
-
-            childNodeHTML += cards.splice(num, 1);
+            childNodeHTML += cards[num]
+           // childNodeHTML += cards.splice(num, 1);
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
+            cards.splice(num, 1);
            
             console.log("länge " + cards.length);
 
@@ -167,7 +168,8 @@ namespace Aufgabe2 {
 let i: number=0;
  var karte1 : string ;
  var karte2 : string ;
-
+ var karte1Inhalt: string;
+ var karte2Inhalt: string;
     
     
     function playMemory(karte: Event): void {
@@ -176,81 +178,53 @@ let i: number=0;
       var target: HTMLElement = <HTMLElement>karte.target;
       if (target.classList.contains("hidden")) {
         i++;
-          //  console.log ("target " + target); 
            if (i==1) {
-                     //   karte1 = undefined;
-                      //  karte2 = undefined;
-                        target.className = "open";
-                        karte1  = target.id; 
-                     //   console.log("karte1 " + karte1);
-                      //  console.log ("target " + target); 
-                       i++;
-                        
-                        document.addEventListener("click", playMemory);
-                        
-                        
-                    }
+               target.className = "open";
+               karte1Inhalt  = target.getElementsByTagName('p')[0].innerHTML;
+               karte1  = target.id; 
+               console.log("Inhalt " + karte1Inhalt + "id " + karte1);
+               i++;         
+               document.addEventListener("click", playMemory);   
+ 
+            }
+          
             if (i==3) {
-             //   console.log ("target " + target); 
+           //   console.log ("target " + target); 
                 target.className = "open";
-                    karte2 = target.id; 
-                    //   console.log("karte2 " + karte2);
-                        i++;
-                     
-                            
-                }
+                karte2 = target.id; 
+                karte2Inhalt  = target.getElementsByTagName('p')[0].innerHTML;
+                console.log("Inhalt " + karte2Inhalt + "id " + karte2);
+                i++;
+             
+
+            }
       }
             
-        //    console.log (karte1 + " " + karte2)
-        
-                
-        
-                if ((karte1 == karte2) && (i==4)) {
-                            console.log("Du hast ein Pärchen!!")  ;
-                           
-                              console.log("karte1" + karte1 + document.getElementById(karte1).className);
-                             console.log("karte2" + karte2 + document.getElementById(karte2).className);
-                           
-                            // document.getElementById(karte2).className = "taken";
-                           //  target.className = "taken";
-                             document.getElementById(karte1).className = "taken";
-                            target.className = "taken";
                             
-                             i=0;
-                             console.log("karte1" + karte1 + document.getElementById(karte1).className);
-                             console.log("karte2" + karte2 + document.getElementById(karte2).className);
+      setTimeout(() => {
+                if ((karte1Inhalt == karte2Inhalt) && (i==4)) {
+                            console.log("Du hast ein Pärchen!!")  ;                           
+                            document.getElementById(karte2).className = "taken";
+                            document.getElementById(karte1).className = "taken";           
+                            i=0;
                             karte1 = undefined;
                             karte2 = undefined;
-                            
-                          //  karte1 = undefined;
-                           
                     
-                                }
+                }
                 
-                if ((karte1 != karte2) && (i==4)) {
-                              console.log("karte1" + karte1 + document.getElementById(karte1).className);
-                             console.log("karte2" + karte2 + document.getElementById(karte2).className);
-                           
-                             document.getElementById(karte1).className = "hidden";
-                         //  target.className = "hidden";
-                           //  document.getElementById(karte2).className = "hidden";
-                            target.className = "hidden";
-                           
-                             console.log(karte1 + document.getElementById(karte1).className);
-                             console.log(karte2 + document.getElementById(karte2).className);
+                if ((karte1Inhalt != karte2Inhalt) && (i==4)) {
+                            document.getElementById(karte1).className = "hidden";
+                            document.getElementById(karte2).className = "hidden";
+          
                              karte1 = undefined;
                              karte2 = undefined;
-                             i=0;
-                               
-                            // karte1 = undefined;
-                                 
-                                
-                   
+                             i=0;   
                 }
-            
-    }
-    
+   }, 1500);
 
+    }
+
+              
     
   
 }
