@@ -133,7 +133,7 @@ var Aufgabe2;
         }
         setTimeout(() => {
             if ((karte1Inhalt == karte2Inhalt) && (i == 4)) {
-                console.log("Du hast ein Pärchen!!");
+                alert("Glückwunsch! Du hast ein Pärchen!!");
                 document.getElementById(karte2).className = "taken";
                 document.getElementById(karte1).className = "taken";
                 i = 0;
