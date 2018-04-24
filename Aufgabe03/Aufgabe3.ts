@@ -170,7 +170,7 @@ let i: number=0;
  var karte2 : string ;
  var karte1Inhalt: string;
  var karte2Inhalt: string;
-    
+  let c: number= 0;  
     
     function playMemory(karte: Event): void {
          
@@ -207,6 +207,7 @@ let i: number=0;
                             document.getElementById(karte2).className = "taken";
                             document.getElementById(karte1).className = "taken";           
                             i=0;
+                            c++;
                             karte1 = undefined;
                             karte2 = undefined;
                     
@@ -220,6 +221,17 @@ let i: number=0;
                              karte2 = undefined;
                              i=0;   
                 }
+            if (i>4) {
+                alert("Du darfst nur 2 Karten aufdecken!!")
+                            document.getElementById(karte1).className = "hidden";
+                            document.getElementById(karte2).className = "hidden";
+                            i=0;
+                }
+          if (c==numCards) {
+              alert ("Juhu! Du hast alle Pärchen gefunden!");
+              c=0;
+              }
+          
    }, 1500);
 
     }

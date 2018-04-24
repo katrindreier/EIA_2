@@ -110,6 +110,7 @@ var Aufgabe2;
     var karte2;
     var karte1Inhalt;
     var karte2Inhalt;
+    let c = 0;
     function playMemory(karte) {
         var target = karte.target;
         if (target.classList.contains("hidden")) {
@@ -137,6 +138,7 @@ var Aufgabe2;
                 document.getElementById(karte2).className = "taken";
                 document.getElementById(karte1).className = "taken";
                 i = 0;
+                c++;
                 karte1 = undefined;
                 karte2 = undefined;
             }
@@ -146,6 +148,16 @@ var Aufgabe2;
                 karte1 = undefined;
                 karte2 = undefined;
                 i = 0;
+            }
+            if (i > 4) {
+                alert("Du darfst nur 2 Karten aufdecken!!");
+                document.getElementById(karte1).className = "hidden";
+                document.getElementById(karte2).className = "hidden";
+                i = 0;
+            }
+            if (c == numCards) {
+                alert("Juhu! Du hast alle Pärchen gefunden!");
+                c = 0;
             }
         }, 1500);
     }
