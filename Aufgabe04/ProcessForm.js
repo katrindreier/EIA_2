@@ -50,9 +50,7 @@ var L04_Interfaces;
         let inputs = document.getElementsByTagName("input");
         let matrikel = inputs[7].value;
         let studi = L04_Interfaces.studiHomoAssoc[matrikel];
-        alert(matrikel);
         if (studi) {
-            console.log("es gibt eine Matr. Nr. ");
             let line = matrikel + ": ";
             line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
             line += studi.gender ? "(M)" : "(F)";

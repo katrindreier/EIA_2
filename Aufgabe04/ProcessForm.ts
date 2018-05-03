@@ -57,10 +57,10 @@ namespace L04_Interfaces {
         let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
         let matrikel: string = inputs[7].value;
         let studi: Studi = studiHomoAssoc[matrikel];
-        alert (matrikel);
+       
 
         if (studi) {
-            console.log("es gibt eine Matr. Nr. ");
+           
             let line: string = matrikel + ": ";
             line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
             line += studi.gender ? "(M)" : "(F)";
