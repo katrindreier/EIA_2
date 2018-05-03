@@ -5,8 +5,10 @@ var L04_Interfaces;
         console.log("Init");
         let insertButton = document.getElementById("insert");
         let refreshButton = document.getElementById("refresh");
+        let searchButton = document.getElementById("search");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        searchButton.addEventListener("click", search);
     }
     function insert(_event) {
         let inputs = document.getElementsByTagName("input");
@@ -39,14 +41,34 @@ var L04_Interfaces;
             line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
             line += studi.gender ? "(M)" : "(F)";
             output.value += line + "\n";
+            console.log(L04_Interfaces.studiHomoAssoc);
         }
-        // zusätzliche Konsolenausgaben zur Demonstration
-        console.group("Simple Array");
-        console.log(L04_Interfaces.studiSimpleArray);
-        console.groupEnd();
-        console.group("Associatives Array (Object)");
-        console.log(L04_Interfaces.studiHomoAssoc);
-        console.groupEnd();
     }
+    function search(_event) {
+        console.log("passiert hier was???? ");
+        let output = document.getElementsByTagName("textarea")[1];
+        let inputs = document.getElementsByTagName("input");
+        let matrikel = inputs[7].value;
+        let studi = L04_Interfaces.studiHomoAssoc[matrikel];
+        alert(matrikel);
+        if (studi) {
+            console.log("es gibt eine Matr. Nr. ");
+            let line = matrikel + ": ";
+            line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
+            line += studi.gender ? "(M)" : "(F)";
+            output.value += line + "\n";
+        }
+        else {
+            console.log("keine Matr");
+            output.value = "Keine Matrikelnummer vorhanden  ";
+        }
+    }
+    // zusätzliche Konsolenausgaben zur Demonstration
+    console.group("Simple Array");
+    console.log(L04_Interfaces.studiSimpleArray);
+    console.groupEnd();
+    console.group("Associatives Array (Object)");
+    console.log(L04_Interfaces.studiHomoAssoc);
+    console.groupEnd();
 })(L04_Interfaces || (L04_Interfaces = {}));
 //# sourceMappingURL=ProcessForm.js.map

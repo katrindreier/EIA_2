@@ -49,44 +49,43 @@ namespace L04_Interfaces {
             output.value += line + "\n";
             console.log(studiHomoAssoc);
         }
-        }
-        
-        function search(_event: Event): void {
-        console.log("passiert hier was????");
+    }
+
+    function search(_event: Event): void {
+        console.log("passiert hier was???? ");
         let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[1];
-            output.value = "";
-        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName( "input" );
-        let matrikel: string = inputs[6].value;
-        matrikel = inputs[6].value;
+        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
+        let matrikel: string = inputs[7].value;
         let studi: Studi = studiHomoAssoc[matrikel];
-        
-        
-            if ( matrikel ) {
-            console.log ("es gibt eine Matr. Nr. ")
+        alert (matrikel);
+
+        if (studi) {
+            console.log("es gibt eine Matr. Nr. ");
             let line: string = matrikel + ": ";
             line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
             line += studi.gender ? "(M)" : "(F)";
             output.value += line + "\n";
-            
-         
+
+
         }
-            
+ 
         else {
-         console.log("keine Matr.")
-         output.value = "Keine Matrikelnummer vorhanden";   
+            console.log("keine Matr");
+            output.value = "Keine Matrikelnummer vorhanden  ";
         }
-        }
-
-        // zusätzliche Konsolenausgaben zur Demonstration
-        console.group("Simple Array");
-        console.log(studiSimpleArray);
-        console.groupEnd();
-
-        console.group("Associatives Array (Object)");
-        console.log(studiHomoAssoc);
-        console.groupEnd();
-    
     }
 
+  
     
-    
+    // zusätzliche Konsolenausgaben zur Demonstration
+    console.group("Simple Array");
+    console.log(studiSimpleArray);
+    console.groupEnd();
+
+    console.group("Associatives Array (Object)");
+    console.log(studiHomoAssoc);
+    console.groupEnd();
+
+}
+
+
