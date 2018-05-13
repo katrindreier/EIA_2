@@ -1,9 +1,21 @@
 namespace Aufgabe2 {
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
+    let select: NodeListOf<HTMLSelectElement> = document.getElementsByTagName("select");
     let Players: number;
     let numCards: number;
     let cards: string[] = [];
     var themeInt: string[];
+    interface CardDeck {
+                color: string;
+                theme: string[]; 
+                font: string;
+                size: string;  
+      }
+    
+    interface Player {
+                name: string; 
+                score: number;    
+       }
     
  
     document.addEventListener('DOMContentLoaded', init);
@@ -25,31 +37,33 @@ function settings(): void {
     
     
 
-    if (numCards >= 1 && Players >= 1) {
+    if (numCards >= 1 && Players >= 1  && Players <= 5 && numCards <= 8) {
     
     let settings: HTMLDivElement = <HTMLDivElement>document.getElementById("settings");
     settings.className = "hideSettings";
     themeInt = ["Hase", "Katze", "Hund", "Pferd", "Kuh", "Esel", "Schwein", "Gans"];  
    
         
-      if (inputs[7].value == "Buchstaben") {
+      if (select[0].value == "Buchstaben") {
              themeInt = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X"];  
       } 
      
-      else if (inputs[7].value == "Professoren") {
-             themeInt = ["Müller", "Frieß", "Schäfer-Schöntal", "Aichele", "Del'Oro", "Reusch", "Friess", "Krach",  ];  
+      else if (select[0].value == "Professoren") {
+             themeInt = ["Müller", "Frieß", "Schäfer-Schöntal", "Aichele", "Dell'Oro", "Reusch", "Friess", "Krach",  ];  
       } 
       
     
        var cardsInterface: CardDeck;
        cardsInterface = {
-            color: inputs[9].value,
+            color: select[2].value,
             theme: themeInt,
-            font: inputs[8].value,
-            size: inputs[10].value,
+            font: select[1].value,
+            size: select[3].value,
         };
         
+      
         
+ 
         
         
     console.log(cardsInterface);
@@ -139,10 +153,10 @@ function settings(): void {
             console.log("Spieler" + " " + p);
 
 
-            childNodeHTML = "<div  class=Player" + p + "'>";           //hier werden Div-Container für die Spieler generiert
+            childNodeHTML = "<div  class=Player" + p + "'>";
             childNodeHTML += "<p>";
-            childNodeHTML += inputs[n].value;                          //Name der Spieler
-            childNodeHTML += "</p>";
+            childNodeHTML += "Spieler " + [n] + " " + inputs[n].value;                          //Name der Spieler
+            childNodeHTML += "</p>";                                                           //hier werden Div-Container für die Spieler generiert
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
 

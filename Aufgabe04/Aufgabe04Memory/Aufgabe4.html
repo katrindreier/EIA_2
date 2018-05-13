@@ -32,36 +32,39 @@ nicht kopiert und auch nicht diktiert.
 		<input type="text" name="firstname" placeholder="Spieler 3"/>
 		<input type="text" name="firstname" placeholder="Spieler 4"/>
 		<input type="text" name="firstname" placeholder="Spieler 5"/>
-		
-		<div id="playerSettings"></div>
-		<input type="number" name="cards" placeholder="Kartenzahl" min="5" max="8"/>
-		<input type="text" name="Datalist" list="options" placeholder="Thema"/>
-		<datalist id="options">
-			<option value="Tiere"> </option>
-			<option value="Professoren"> </option>
-			<option value="Buchstaben"> </option>
-		</datalist>
+				
 	
-	<input type="text" name="Datalist" list="fonts" placeholder="Schriftart"/>
-		<datalist id="fonts">
-			<option value="Comic Sans"> </option>
-			<option value="Arial"> </option>
-			<option value="Buchstaben"> </option>
-		</datalist>
+		<div id="playerSettings"></div>
 		
-	<input type="text" name="Datalist" list="colors" placeholder="Farbe"/>
-		<datalist id="colors">
-			<option value="rot"> </option>
-			<option value="gelb"> </option>
-			<option value="blau"> </option>
-		</datalist><br>
+		<input type="number" name="cards" placeholder="Kartenzahl" min="5" max="8"/>
+	
 		
-	<input type="text" name="Datalist" list="size" placeholder="Größe"/>
-		<datalist id="size">
-			<option value="1"> </option>
-			<option value="2"> </option>
-			<option value="3"> </option>
-		</datalist><br>
+	
+		
+	<select id="theme">
+  	<option value="Professoren">Profs</option>
+  	<option value="Tiere">Tiere</option>
+  	<option value="Buchstaben">Buchstaben</option>
+  	</select> 
+	
+	<select id="fonts" >
+  	<option value="Comic Sans">Comic Sans</option>
+  	<option value="Arial">Arial</option>
+  	</select>
+  	
+  	<select id="color" >
+  	<option value="blau">blau</option>
+  	<option value="rot">rot</option>
+  	<option value="grün">grün</option>
+  	<option value="gelb">gelb</option>
+  	<option value="pink">pink</option>
+  	</select>
+  	
+  	<select id="size">
+  	<option value="size1">1</option>
+  	<option value="size2">2</option>
+  	<option value="size3">3</option>
+  	</select>
 		
 		<button type="button" id="play">Spielen</button>
 	

@@ -11,6 +11,14 @@ input {
    
 }	
 
+select {
+	height: 2em;
+	padding: 2px;
+	padding-top: 2px;
+   
+}	
+
+
 button {
 	height: 3em;
 }
@@ -41,26 +49,32 @@ body {
 
 
 .taken {
-	
-	opacity: 0.0; 
+	visibility: hidden;
+/*	opacity: 0.0; 
 	background-color: #e0e0eb;
-	text-align: center;
+	text-align: center;*/
 }
 
 .hidden {
-	
+	text-indent: 100%;
+	white-space: nowrap;
+    overflow: hidden;
 	background-color: #b2eeff; 
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	color: #b2eeff;
-	/*color: black;*/
+	/*color: #b2eeff;
+	color: black;*/
 }
 
 .hidden:hover {
-	
+	cursor: -webkit-grab; 
+	cursor: grab;
+	text-indent: 100%;
+	white-space: nowrap;
+    overflow: hidden;
 	background-color: #9dcfdd; 
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.19), 0 6px 20px 0 rgba(0,0,0,0.21);
-	color: #9dcfdd;
-	/*color: black;*/
+	/*color: #9dcfdd;
+	color: black;*/
 }
 
 .open {

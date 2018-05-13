@@ -1,6 +1,7 @@
 var Aufgabe2;
 (function (Aufgabe2) {
     let inputs = document.getElementsByTagName("input");
+    let select = document.getElementsByTagName("select");
     let Players;
     let numCards;
     let cards = [];
@@ -17,22 +18,22 @@ var Aufgabe2;
         numCards = parseInt(inputs[6].value);
         Players = parseInt(inputs[0].value);
         console.log(numCards + " " + Players);
-        if (numCards >= 1 && Players >= 1) {
+        if (numCards >= 1 && Players >= 1 && Players <= 5 && numCards <= 8) {
             let settings = document.getElementById("settings");
             settings.className = "hideSettings";
             themeInt = ["Hase", "Katze", "Hund", "Pferd", "Kuh", "Esel", "Schwein", "Gans"];
-            if (inputs[7].value == "Buchstaben") {
+            if (select[0].value == "Buchstaben") {
                 themeInt = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X"];
             }
-            else if (inputs[7].value == "Professoren") {
-                themeInt = ["Müller", "Frieß", "Schäfer-Schöntal", "Aichele", "Del'Oro", "Reusch", "Friess", "Krach",];
+            else if (select[0].value == "Professoren") {
+                themeInt = ["Müller", "Frieß", "Schäfer-Schöntal", "Aichele", "Dell'Oro", "Reusch", "Friess", "Krach",];
             }
             var cardsInterface;
             cardsInterface = {
-                color: inputs[9].value,
+                color: select[2].value,
                 theme: themeInt,
-                font: inputs[8].value,
-                size: inputs[10].value,
+                font: select[1].value,
+                size: select[3].value,
             };
             console.log(cardsInterface);
             pushCards();
@@ -80,10 +81,10 @@ var Aufgabe2;
         let n = 1;
         while (Players > p) {
             console.log("Spieler" + " " + p);
-            childNodeHTML = "<div  class=Player" + p + "'>"; //hier werden Div-Container für die Spieler generiert
+            childNodeHTML = "<div  class=Player" + p + "'>";
             childNodeHTML += "<p>";
-            childNodeHTML += inputs[n].value; //Name der Spieler
-            childNodeHTML += "</p>";
+            childNodeHTML += "Spieler " + [n] + " " + inputs[n].value; //Name der Spieler
+            childNodeHTML += "</p>"; //hier werden Div-Container für die Spieler generiert
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
             n++;
