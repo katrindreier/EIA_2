@@ -28,6 +28,7 @@ button {
 }
 
 .hideSettings {
+	height: 3px;
     visibility: hidden;
     }
 

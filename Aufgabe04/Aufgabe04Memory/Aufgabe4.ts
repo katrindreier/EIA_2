@@ -21,31 +21,74 @@ namespace Aufgabe2 {
     document.addEventListener('DOMContentLoaded', init);
 
  function init(_event: Event): void { 
-    console.log("Gehts hier los??")   
-     let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("play");
-         searchButton.addEventListener("click", settings);    
-    
+     var node: any = document.getElementById("Settings");
+        let childNodeHTML: string;
+            childNodeHTML = "<p>";
+            childNodeHTML += "Einstellungen";
+            childNodeHTML += "</p>";                                                           
+            childNodeHTML += " </div> ";
+            childNodeHTML += "<input id='number' type='number' name='players' placeholder='Spielerzahl' min='1' max='5'/>";
+            
+            childNodeHTML += "<button type='button' id='playerNames'>";
+            childNodeHTML += "Spielernamen eingeben";
+            childNodeHTML += "</button>";
+           
+            childNodeHTML += "<input id='number' type='number' name='players' placeholder='Kartenzahl' min='4' max='8'/>";    
+            childNodeHTML += "<select id='theme'>";
+            childNodeHTML +=  "<option value='Professoren'>Profs</option>";
+            childNodeHTML +=  "<option value='Tiere'>Tiere</option>";
+            childNodeHTML +=  "<option value='Buchstaben'>Buchstaben</option>";
+            childNodeHTML +=  "</select>";
+            childNodeHTML +=  "<button type='button' id='play'>";
+            childNodeHTML +=  "Spielen";
+            childNodeHTML +=  "</button>";
+        
+     
+            node.innerHTML += childNodeHTML; 
+            let addPlayerNumber: HTMLButtonElement = <HTMLButtonElement>document.getElementById("playerNames");
+            addPlayerNumber.addEventListener("click", addPlayer); 
+            
+             let playButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("play");
+            playButton.addEventListener("click", settings);
     }
 
+function addPlayer(): void {
+    Players = 0;
+    var node: any = document.getElementById("Settings");
+     let childNodeHTML: string;
+     Players = parseInt(inputs[0].value); 
+     let i: number = 1; 
+     while (i <= Players) {
+                console.log ("Durchgang " + i)
+                childNodeHTML +=  "<br>";
+                childNodeHTML +=  "<input type='text' name='firstname' placeholder='Spieler";
+                childNodeHTML +=  i
+                childNodeHTML += "'/>";
+                
+                i++;
+                }
+    node.innerHTML += childNodeHTML;
+     let addPlayerNumber: HTMLButtonElement = <HTMLButtonElement>document.getElementById("playerNames");
+     addPlayerNumber.addEventListener("click", addPlayer);  
+    let playButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("play");
+    playButton.addEventListener("click", settings);
+    } 
+    
 function settings(): void {
-     
-    numCards = 0;
-    Players = 0;  
-    numCards = parseInt(inputs[6].value);
-    Players = parseInt(inputs[0].value);  
+      
+    numCards = parseInt(inputs[1].value); 
     console.log (numCards + " " + Players);
-    
-    
 
     if (numCards >= 1 && Players >= 1  && Players <= 5 && numCards <= 8) {
     
-    let settings: HTMLDivElement = <HTMLDivElement>document.getElementById("settings");
+    let settings: HTMLDivElement = <HTMLDivElement>document.getElementById("Settings");
     settings.className = "hideSettings";
     themeInt = ["Hase", "Katze", "Hund", "Pferd", "Kuh", "Esel", "Schwein", "Gans"];  
    
         
       if (select[0].value == "Buchstaben") {
-             themeInt = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X"];  
+             themeInt = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X"];
+              
       } 
      
       else if (select[0].value == "Professoren") {
@@ -53,20 +96,20 @@ function settings(): void {
       } 
       
     
-       var cardsInterface: CardDeck;
+  /*     var cardsInterface: CardDeck;
        cardsInterface = {
             color: select[2].value,
             theme: themeInt,
             font: select[1].value,
             size: select[3].value,
-        };
+        };*/
         
       
         
  
         
         
-    console.log(cardsInterface);
+   // console.log(cardsInterface);
         
     pushCards();
     createCards();
@@ -145,7 +188,7 @@ function settings(): void {
         var node: any = document.getElementById("Players");
         var childNodeHTML: string;
         let p: number = 0;
-        let n: number = 1;
+        let n: number = 2;
 
 
         while (Players > p) {

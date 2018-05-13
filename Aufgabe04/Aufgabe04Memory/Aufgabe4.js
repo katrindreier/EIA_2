@@ -8,18 +8,56 @@ var Aufgabe2;
     var themeInt;
     document.addEventListener('DOMContentLoaded', init);
     function init(_event) {
-        console.log("Gehts hier los??");
-        let searchButton = document.getElementById("play");
-        searchButton.addEventListener("click", settings);
+        var node = document.getElementById("Settings");
+        let childNodeHTML;
+        childNodeHTML = "<p>";
+        childNodeHTML += "Einstellungen";
+        childNodeHTML += "</p>";
+        childNodeHTML += " </div> ";
+        childNodeHTML += "<input id='number' type='number' name='players' placeholder='Spielerzahl' min='1' max='5'/>";
+        childNodeHTML += "<button type='button' id='playerNames'>";
+        childNodeHTML += "Spielernamen eingeben";
+        childNodeHTML += "</button>";
+        childNodeHTML += "<input id='number' type='number' name='players' placeholder='Kartenzahl' min='4' max='8'/>";
+        childNodeHTML += "<select id='theme'>";
+        childNodeHTML += "<option value='Professoren'>Profs</option>";
+        childNodeHTML += "<option value='Tiere'>Tiere</option>";
+        childNodeHTML += "<option value='Buchstaben'>Buchstaben</option>";
+        childNodeHTML += "</select>";
+        childNodeHTML += "<button type='button' id='play'>";
+        childNodeHTML += "Spielen";
+        childNodeHTML += "</button>";
+        node.innerHTML += childNodeHTML;
+        let addPlayerNumber = document.getElementById("playerNames");
+        addPlayerNumber.addEventListener("click", addPlayer);
+        let playButton = document.getElementById("play");
+        playButton.addEventListener("click", settings);
+    }
+    function addPlayer() {
+        Players = 0;
+        var node = document.getElementById("Settings");
+        let childNodeHTML;
+        Players = parseInt(inputs[0].value);
+        let i = 1;
+        while (i <= Players) {
+            console.log("Durchgang " + i);
+            childNodeHTML += "<br>";
+            childNodeHTML += "<input type='text' name='firstname' placeholder='Spieler";
+            childNodeHTML += i;
+            childNodeHTML += "'/>";
+            i++;
+        }
+        node.innerHTML += childNodeHTML;
+        let addPlayerNumber = document.getElementById("playerNames");
+        addPlayerNumber.addEventListener("click", addPlayer);
+        let playButton = document.getElementById("play");
+        playButton.addEventListener("click", settings);
     }
     function settings() {
-        numCards = 0;
-        Players = 0;
-        numCards = parseInt(inputs[6].value);
-        Players = parseInt(inputs[0].value);
+        numCards = parseInt(inputs[1].value);
         console.log(numCards + " " + Players);
         if (numCards >= 1 && Players >= 1 && Players <= 5 && numCards <= 8) {
-            let settings = document.getElementById("settings");
+            let settings = document.getElementById("Settings");
             settings.className = "hideSettings";
             themeInt = ["Hase", "Katze", "Hund", "Pferd", "Kuh", "Esel", "Schwein", "Gans"];
             if (select[0].value == "Buchstaben") {
@@ -28,14 +66,14 @@ var Aufgabe2;
             else if (select[0].value == "Professoren") {
                 themeInt = ["Müller", "Frieß", "Schäfer-Schöntal", "Aichele", "Dell'Oro", "Reusch", "Friess", "Krach",];
             }
-            var cardsInterface;
-            cardsInterface = {
-                color: select[2].value,
-                theme: themeInt,
-                font: select[1].value,
-                size: select[3].value,
-            };
-            console.log(cardsInterface);
+            /*     var cardsInterface: CardDeck;
+                 cardsInterface = {
+                      color: select[2].value,
+                      theme: themeInt,
+                      font: select[1].value,
+                      size: select[3].value,
+                  };*/
+            // console.log(cardsInterface);
             pushCards();
             createCards();
             CreatePlayers();
@@ -78,7 +116,7 @@ var Aufgabe2;
         var node = document.getElementById("Players");
         var childNodeHTML;
         let p = 0;
-        let n = 1;
+        let n = 2;
         while (Players > p) {
             console.log("Spieler" + " " + p);
             childNodeHTML = "<div  class=Player" + p + "'>";
