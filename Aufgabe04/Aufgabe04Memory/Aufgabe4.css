@@ -5,21 +5,38 @@
 }
 
 input {
-	height: 2em;
+   border-radius: 5px;
+	margin: 0.2em;
+	height: 30px;
 	padding: 2px;
 	padding-top: 2px;
    
 }	
 
 select {
-	height: 2em;
-	padding: 2px;
-	padding-top: 2px;
-   
-}	
+	   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+	margin: 0.2em;
+   width: 240px;
+   height: 30px;
+   overflow: hidden;
+   border: 1px solid #ccc;
+   background-color: white;
+   }
 
+#play {
+	background-color: #32324e;
+	font-size: 1.5em;
+	color: white;	
+}
 
 button {
+
+   border-radius: 5px;
+	margin: 0.2em;
+	padding: 2px;
+	background-color: white;
 	height: 3em;
 }
 

@@ -1,5 +1,5 @@
-var Aufgabe2;
-(function (Aufgabe2) {
+var Aufgabe4;
+(function (Aufgabe4) {
     let inputs = document.getElementsByTagName("input");
     let select = document.getElementsByTagName("select");
     let Players;
@@ -13,17 +13,39 @@ var Aufgabe2;
         childNodeHTML = "<p>";
         childNodeHTML += "Einstellungen";
         childNodeHTML += "</p>";
-        childNodeHTML += " </div> ";
+        //  childNodeHTML += " </div> ";
+        childNodeHTML += "<input id='number' type='number' name='players' placeholder='Kartenzahl' min='4' max='8'/>";
         childNodeHTML += "<input id='number' type='number' name='players' placeholder='Spielerzahl' min='1' max='5'/>";
         childNodeHTML += "<button type='button' id='playerNames'>";
         childNodeHTML += "Spielernamen eingeben";
         childNodeHTML += "</button>";
-        childNodeHTML += "<input id='number' type='number' name='players' placeholder='Kartenzahl' min='4' max='8'/>";
+        childNodeHTML += "<br>";
+        childNodeHTML += "<div id='names'></div>";
         childNodeHTML += "<select id='theme'>";
+        childNodeHTML += "<option value='Professoren'>Kartendeck</option>";
         childNodeHTML += "<option value='Professoren'>Profs</option>";
         childNodeHTML += "<option value='Tiere'>Tiere</option>";
         childNodeHTML += "<option value='Buchstaben'>Buchstaben</option>";
         childNodeHTML += "</select>";
+        childNodeHTML += "<select id='font'>";
+        childNodeHTML += "<option value='Arial'>Schriftart</option>";
+        childNodeHTML += "<option value='Arial'>Arial</option>";
+        childNodeHTML += "<option value='Times New Roman'>Times New Roman</option>";
+        childNodeHTML += "<option value='Font'>Font</option>";
+        childNodeHTML += "</select>";
+        childNodeHTML += "<select id='color'>";
+        childNodeHTML += "<option value='rot'>Farbe</option>";
+        childNodeHTML += "<option value='rot'>rot</option>";
+        childNodeHTML += "<option value='gelb'>gelb</option>";
+        childNodeHTML += "<option value='blau'>blau</option>";
+        childNodeHTML += "</select>";
+        childNodeHTML += "<select id='size'>";
+        childNodeHTML += "<option value='1'>Größe</option>";
+        childNodeHTML += "<option value='1'>1</option>";
+        childNodeHTML += "<option value='2'>2</option>";
+        childNodeHTML += "<option value='3'>3</option>";
+        childNodeHTML += "</select>";
+        childNodeHTML += "<br>";
         childNodeHTML += "<button type='button' id='play'>";
         childNodeHTML += "Spielen";
         childNodeHTML += "</button>";
@@ -35,26 +57,29 @@ var Aufgabe2;
     }
     function addPlayer() {
         Players = 0;
-        var node = document.getElementById("Settings");
+        var node = document.getElementById("names");
         let childNodeHTML;
-        Players = parseInt(inputs[0].value);
+        Players = parseInt(inputs[1].value);
         let i = 1;
-        while (i <= Players) {
+        while (i <= Players && Players <= 5) {
             console.log("Durchgang " + i);
-            childNodeHTML += "<br>";
+            //   childNodeHTML +=  "<br>";
             childNodeHTML += "<input type='text' name='firstname' placeholder='Spieler";
             childNodeHTML += i;
             childNodeHTML += "'/>";
             i++;
+            let addPlayerNumber = document.getElementById("playerNames");
+            addPlayerNumber.removeEventListener("click", addPlayer);
         }
         node.innerHTML += childNodeHTML;
-        let addPlayerNumber = document.getElementById("playerNames");
-        addPlayerNumber.addEventListener("click", addPlayer);
         let playButton = document.getElementById("play");
         playButton.addEventListener("click", settings);
     }
+    function noMorePlayers() {
+        alert("Du kannst nur einmal Spielernamen eingeben!");
+    }
     function settings() {
-        numCards = parseInt(inputs[1].value);
+        numCards = parseInt(inputs[0].value);
         console.log(numCards + " " + Players);
         if (numCards >= 1 && Players >= 1 && Players <= 5 && numCards <= 8) {
             let settings = document.getElementById("Settings");
@@ -66,13 +91,13 @@ var Aufgabe2;
             else if (select[0].value == "Professoren") {
                 themeInt = ["Müller", "Frieß", "Schäfer-Schöntal", "Aichele", "Dell'Oro", "Reusch", "Friess", "Krach",];
             }
-            /*     var cardsInterface: CardDeck;
-                 cardsInterface = {
-                      color: select[2].value,
-                      theme: themeInt,
-                      font: select[1].value,
-                      size: select[3].value,
-                  };*/
+            var cardsInterface;
+            cardsInterface = {
+                color: select[2].value,
+                theme: themeInt,
+                font: select[1].value,
+                size: select[3].value,
+            };
             // console.log(cardsInterface);
             pushCards();
             createCards();
@@ -115,13 +140,13 @@ var Aufgabe2;
         console.log("Los geht's " + Players + " Spieler werden generiert");
         var node = document.getElementById("Players");
         var childNodeHTML;
-        let p = 0;
+        let p = 1;
         let n = 2;
-        while (Players > p) {
+        while (Players >= p) {
             console.log("Spieler" + " " + p);
             childNodeHTML = "<div  class=Player" + p + "'>";
             childNodeHTML += "<p>";
-            childNodeHTML += "Spieler " + [n] + " " + inputs[n].value; //Name der Spieler
+            childNodeHTML += "Spieler " + [p] + " " + inputs[n].value; //Name der Spieler
             childNodeHTML += "</p>"; //hier werden Div-Container für die Spieler generiert
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
@@ -185,5 +210,5 @@ var Aufgabe2;
             }
         }, 1500);
     }
-})(Aufgabe2 || (Aufgabe2 = {}));
+})(Aufgabe4 || (Aufgabe4 = {}));
 //# sourceMappingURL=Aufgabe4.js.map

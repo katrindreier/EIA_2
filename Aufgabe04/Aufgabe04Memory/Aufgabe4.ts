@@ -1,4 +1,4 @@
-namespace Aufgabe2 {
+namespace Aufgabe4 {
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
     let select: NodeListOf<HTMLSelectElement> = document.getElementsByTagName("select");
     let Players: number;
@@ -26,19 +26,49 @@ namespace Aufgabe2 {
             childNodeHTML = "<p>";
             childNodeHTML += "Einstellungen";
             childNodeHTML += "</p>";                                                           
-            childNodeHTML += " </div> ";
+          //  childNodeHTML += " </div> ";
+            childNodeHTML += "<input id='number' type='number' name='players' placeholder='Kartenzahl' min='4' max='8'/>";    
             childNodeHTML += "<input id='number' type='number' name='players' placeholder='Spielerzahl' min='1' max='5'/>";
             
             childNodeHTML += "<button type='button' id='playerNames'>";
             childNodeHTML += "Spielernamen eingeben";
             childNodeHTML += "</button>";
-           
-            childNodeHTML += "<input id='number' type='number' name='players' placeholder='Kartenzahl' min='4' max='8'/>";    
+            childNodeHTML +=  "<br>";
+     
+            childNodeHTML +=  "<div id='names'></div>";
+
+
             childNodeHTML += "<select id='theme'>";
+            childNodeHTML +=  "<option value='Professoren'>Kartendeck</option>";
             childNodeHTML +=  "<option value='Professoren'>Profs</option>";
             childNodeHTML +=  "<option value='Tiere'>Tiere</option>";
             childNodeHTML +=  "<option value='Buchstaben'>Buchstaben</option>";
             childNodeHTML +=  "</select>";
+     
+            childNodeHTML += "<select id='font'>";
+            childNodeHTML +=  "<option value='Arial'>Schriftart</option>";
+            childNodeHTML +=  "<option value='Arial'>Arial</option>";
+            childNodeHTML +=  "<option value='Times New Roman'>Times New Roman</option>";
+            childNodeHTML +=  "<option value='Font'>Font</option>";
+            childNodeHTML +=  "</select>";
+     
+            childNodeHTML += "<select id='color'>";
+            childNodeHTML +=  "<option value='rot'>Farbe</option>";
+            childNodeHTML +=  "<option value='rot'>rot</option>";
+            childNodeHTML +=  "<option value='gelb'>gelb</option>";
+            childNodeHTML +=  "<option value='blau'>blau</option>";
+            childNodeHTML +=  "</select>";
+     
+            childNodeHTML += "<select id='size'>";
+            childNodeHTML +=  "<option value='1'>Größe</option>"
+            childNodeHTML +=  "<option value='1'>1</option>";
+            childNodeHTML +=  "<option value='2'>2</option>";
+            childNodeHTML +=  "<option value='3'>3</option>";
+            childNodeHTML +=  "</select>";
+     
+            childNodeHTML +=  "<br>";
+
+     
             childNodeHTML +=  "<button type='button' id='play'>";
             childNodeHTML +=  "Spielen";
             childNodeHTML +=  "</button>";
@@ -53,30 +83,37 @@ namespace Aufgabe2 {
     }
 
 function addPlayer(): void {
-    Players = 0;
-    var node: any = document.getElementById("Settings");
-     let childNodeHTML: string;
-     Players = parseInt(inputs[0].value); 
+     Players = 0;
+     var node: any = document.getElementById("names");
+     let childNodeHTML: string;  
+     Players = parseInt(inputs[1].value);         
      let i: number = 1; 
-     while (i <= Players) {
+     while (i <= Players && Players <= 5) {
                 console.log ("Durchgang " + i)
-                childNodeHTML +=  "<br>";
+             //   childNodeHTML +=  "<br>";
                 childNodeHTML +=  "<input type='text' name='firstname' placeholder='Spieler";
-                childNodeHTML +=  i
+                childNodeHTML +=  i;
                 childNodeHTML += "'/>";
                 
                 i++;
+                let addPlayerNumber: HTMLButtonElement = <HTMLButtonElement>document.getElementById("playerNames");
+                addPlayerNumber.removeEventListener("click", addPlayer)
                 }
     node.innerHTML += childNodeHTML;
-     let addPlayerNumber: HTMLButtonElement = <HTMLButtonElement>document.getElementById("playerNames");
-     addPlayerNumber.addEventListener("click", addPlayer);  
+    
     let playButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("play");
     playButton.addEventListener("click", settings);
     } 
     
+function noMorePlayers(): void {
+    
+    alert ("Du kannst nur einmal Spielernamen eingeben!")
+    }
+    
+    
 function settings(): void {
       
-    numCards = parseInt(inputs[1].value); 
+    numCards = parseInt(inputs[0].value); 
     console.log (numCards + " " + Players);
 
     if (numCards >= 1 && Players >= 1  && Players <= 5 && numCards <= 8) {
@@ -96,13 +133,13 @@ function settings(): void {
       } 
       
     
-  /*     var cardsInterface: CardDeck;
+       var cardsInterface: CardDeck;
        cardsInterface = {
             color: select[2].value,
             theme: themeInt,
             font: select[1].value,
             size: select[3].value,
-        };*/
+        };
         
       
         
@@ -187,18 +224,18 @@ function settings(): void {
         console.log("Los geht's " + Players + " Spieler werden generiert");
         var node: any = document.getElementById("Players");
         var childNodeHTML: string;
-        let p: number = 0;
+        let p: number = 1;
         let n: number = 2;
 
 
-        while (Players > p) {
+        while (Players >= p) {
 
             console.log("Spieler" + " " + p);
 
 
             childNodeHTML = "<div  class=Player" + p + "'>";
             childNodeHTML += "<p>";
-            childNodeHTML += "Spieler " + [n] + " " + inputs[n].value;                          //Name der Spieler
+            childNodeHTML += "Spieler " + [p] + " " + inputs[n].value;                          //Name der Spieler
             childNodeHTML += "</p>";                                                           //hier werden Div-Container für die Spieler generiert
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
