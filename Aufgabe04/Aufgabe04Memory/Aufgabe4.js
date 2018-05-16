@@ -27,24 +27,27 @@ var Aufgabe4;
         childNodeHTML += "<option value='Tiere'>Tiere</option>";
         childNodeHTML += "<option value='Buchstaben'>Buchstaben</option>";
         childNodeHTML += "</select>";
-        childNodeHTML += "<select id='font'>";
-        childNodeHTML += "<option value='Arial'>Schriftart</option>";
-        childNodeHTML += "<option value='Arial'>Arial</option>";
-        childNodeHTML += "<option value='Times New Roman'>Times New Roman</option>";
-        childNodeHTML += "<option value='Font'>Font</option>";
-        childNodeHTML += "</select>";
-        childNodeHTML += "<select id='color'>";
-        childNodeHTML += "<option value='rot'>Farbe</option>";
-        childNodeHTML += "<option value='rot'>rot</option>";
-        childNodeHTML += "<option value='gelb'>gelb</option>";
-        childNodeHTML += "<option value='blau'>blau</option>";
-        childNodeHTML += "</select>";
-        childNodeHTML += "<select id='size'>";
-        childNodeHTML += "<option value='1'>Größe</option>";
-        childNodeHTML += "<option value='1'>1</option>";
-        childNodeHTML += "<option value='2'>2</option>";
-        childNodeHTML += "<option value='3'>3</option>";
-        childNodeHTML += "</select>";
+        /*           childNodeHTML += "<select id='font'>";
+                   childNodeHTML +=  "<option value='Arial'>Schriftart</option>";
+                   childNodeHTML +=  "<option value='Arial'>Arial</option>";
+                   childNodeHTML +=  "<option value='Times New Roman'>Times New Roman</option>";
+                   childNodeHTML +=  "<option value='Font'>Font</option>";
+                   childNodeHTML +=  "</select>";
+            
+                   childNodeHTML += "<select id='color'>";
+                   childNodeHTML +=  "<option value='rot'>Farbe</option>";
+                   childNodeHTML +=  "<option value='rot'>rot</option>";
+                   childNodeHTML +=  "<option value='gelb'>gelb</option>";
+                   childNodeHTML +=  "<option value='blau'>blau</option>";
+                   childNodeHTML +=  "</select>";
+            
+                   childNodeHTML += "<select id='size'>";
+                   childNodeHTML +=  "<option value='1'>Größe</option>"
+                   childNodeHTML +=  "<option value='1'>1</option>";
+                   childNodeHTML +=  "<option value='2'>2</option>";
+                   childNodeHTML +=  "<option value='3'>3</option>";
+                   childNodeHTML +=  "</select>";
+            */
         childNodeHTML += "<br>";
         childNodeHTML += "<button type='button' id='play'>";
         childNodeHTML += "Spielen";
@@ -85,25 +88,38 @@ var Aufgabe4;
             let settings = document.getElementById("Settings");
             settings.className = "hideSettings";
             themeInt = ["Hase", "Katze", "Hund", "Pferd", "Kuh", "Esel", "Schwein", "Gans"];
+            var cardsInterface;
+            cardsInterface = {
+                color: "green",
+                theme: themeInt,
+                font: "times new roman",
+                size: "3",
+            };
             if (select[0].value == "Buchstaben") {
                 themeInt = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X"];
+                cardsInterface = {
+                    color: "blue",
+                    theme: themeInt,
+                    font: "arial",
+                    size: "2",
+                };
             }
             else if (select[0].value == "Professoren") {
                 themeInt = ["Müller", "Frieß", "Schäfer-Schöntal", "Aichele", "Dell'Oro", "Reusch", "Friess", "Krach",];
+                cardsInterface = {
+                    color: "red",
+                    theme: themeInt,
+                    font: "arial",
+                    size: "3",
+                };
             }
-            var cardsInterface;
-            cardsInterface = {
-                color: select[2].value,
-                theme: themeInt,
-                font: select[1].value,
-                size: select[3].value,
-            };
-            // console.log(cardsInterface);
-            pushCards();
-            createCards();
-            CreatePlayers();
-            document.addEventListener("click", playMemory);
+            ;
         }
+        console.log(cardsInterface);
+        pushCards();
+        createCards();
+        CreatePlayers();
+        document.addEventListener("click", playMemory);
     }
     function pushCards() {
         let c = 0;

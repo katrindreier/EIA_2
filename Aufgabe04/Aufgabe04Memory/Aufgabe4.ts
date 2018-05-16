@@ -45,7 +45,7 @@ namespace Aufgabe4 {
             childNodeHTML +=  "<option value='Buchstaben'>Buchstaben</option>";
             childNodeHTML +=  "</select>";
      
-            childNodeHTML += "<select id='font'>";
+ /*           childNodeHTML += "<select id='font'>";
             childNodeHTML +=  "<option value='Arial'>Schriftart</option>";
             childNodeHTML +=  "<option value='Arial'>Arial</option>";
             childNodeHTML +=  "<option value='Times New Roman'>Times New Roman</option>";
@@ -65,7 +65,7 @@ namespace Aufgabe4 {
             childNodeHTML +=  "<option value='2'>2</option>";
             childNodeHTML +=  "<option value='3'>3</option>";
             childNodeHTML +=  "</select>";
-     
+     */
             childNodeHTML +=  "<br>";
 
      
@@ -122,31 +122,41 @@ function settings(): void {
     settings.className = "hideSettings";
     themeInt = ["Hase", "Katze", "Hund", "Pferd", "Kuh", "Esel", "Schwein", "Gans"];  
    
+       var cardsInterface: CardDeck;
+       cardsInterface = {
+            color: "green",
+            theme: themeInt,
+            font: "times new roman",
+            size: "3",
+        };
         
       if (select[0].value == "Buchstaben") {
              themeInt = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X"];
+        
+       cardsInterface = {
+            color: "blue",
+            theme: themeInt,
+            font: "arial",
+            size: "2",
+        };
               
       } 
      
       else if (select[0].value == "Professoren") {
              themeInt = ["Müller", "Frieß", "Schäfer-Schöntal", "Aichele", "Dell'Oro", "Reusch", "Friess", "Krach",  ];  
-      } 
-      
-    
-       var cardsInterface: CardDeck;
+          
+       
        cardsInterface = {
-            color: select[2].value,
+            color: "red",
             theme: themeInt,
-            font: select[1].value,
-            size: select[3].value,
+            font: "arial",
+            size: "3",
         };
-        
-      
-        
- 
-        
-        
-   // console.log(cardsInterface);
+              
+        };
+      }
+     
+ console.log(cardsInterface);
         
     pushCards();
     createCards();
@@ -155,7 +165,7 @@ function settings(): void {
     }
     
     
-    }
+    
 
 
     function pushCards(): void {                         //hier werden die Karten ins Array gepusht
