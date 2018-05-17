@@ -85,12 +85,13 @@ namespace Aufgabe4 {
 function addPlayer(): void {
      Players = 0;
      var node: any = document.getElementById("names");
-     let childNodeHTML: string;  
+     let childNodeHTML: string = "";  
      Players = parseInt(inputs[1].value);         
      let i: number = 1; 
      while (i <= Players && Players <= 5) {
-                console.log ("Durchgang " + i)
+                //console.log ("Durchgang " + i);
              //   childNodeHTML +=  "<br>";
+                
                 childNodeHTML +=  "<input type='text' name='firstname' placeholder='Spieler";
                 childNodeHTML +=  i;
                 childNodeHTML += "'/>";
@@ -103,6 +104,7 @@ function addPlayer(): void {
     
     let playButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("play");
     playButton.addEventListener("click", settings);
+
     } 
     
 function noMorePlayers(): void {

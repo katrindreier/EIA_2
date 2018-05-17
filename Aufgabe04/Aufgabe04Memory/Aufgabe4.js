@@ -61,11 +61,11 @@ var Aufgabe4;
     function addPlayer() {
         Players = 0;
         var node = document.getElementById("names");
-        let childNodeHTML;
+        let childNodeHTML = "";
         Players = parseInt(inputs[1].value);
         let i = 1;
         while (i <= Players && Players <= 5) {
-            console.log("Durchgang " + i);
+            //console.log ("Durchgang " + i);
             //   childNodeHTML +=  "<br>";
             childNodeHTML += "<input type='text' name='firstname' placeholder='Spieler";
             childNodeHTML += i;
