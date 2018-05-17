@@ -5,7 +5,17 @@ var Aufgabe4;
     let Players;
     let numCards;
     let cards = [];
-    var themeInt;
+    /* interface CardDeck {
+                 color: string;
+                 theme: string[];
+                 font: string;
+                 size: string;
+       }*/
+    /*interface Player {
+                name: string;
+                score: number;
+       }*/
+    //var cardsInterface: CardDeck;
     document.addEventListener('DOMContentLoaded', init);
     function init(_event) {
         var node = document.getElementById("Settings");
@@ -23,9 +33,9 @@ var Aufgabe4;
         childNodeHTML += "<div id='names'></div>";
         childNodeHTML += "<select id='theme'>";
         childNodeHTML += "<option value='Professoren'>Kartendeck</option>";
-        childNodeHTML += "<option value='Professoren'>Profs</option>";
-        childNodeHTML += "<option value='Tiere'>Tiere</option>";
-        childNodeHTML += "<option value='Buchstaben'>Buchstaben</option>";
+        childNodeHTML += "<option value='0'>Tiere</option>";
+        childNodeHTML += "<option value='1'>Profs</option>";
+        childNodeHTML += "<option value='2'>Buchstaben</option>";
         childNodeHTML += "</select>";
         /*           childNodeHTML += "<select id='font'>";
                    childNodeHTML +=  "<option value='Arial'>Schriftart</option>";
@@ -87,35 +97,16 @@ var Aufgabe4;
         if (numCards >= 1 && Players >= 1 && Players <= 5 && numCards <= 8) {
             let settings = document.getElementById("Settings");
             settings.className = "hideSettings";
-            themeInt = ["Hase", "Katze", "Hund", "Pferd", "Kuh", "Esel", "Schwein", "Gans"];
-            var cardsInterface;
-            cardsInterface = {
-                color: "green",
-                theme: themeInt,
-                font: "times new roman",
-                size: "3",
-            };
-            if (select[0].value == "Buchstaben") {
-                themeInt = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X"];
-                cardsInterface = {
-                    color: "blue",
-                    theme: themeInt,
-                    font: "arial",
-                    size: "2",
-                };
+            Aufgabe4.cardsInterface = Aufgabe4.cardsDeckTiere;
+            if (select[0].value == "1") {
+                Aufgabe4.cardsInterface = Aufgabe4.cardsDeckProfessoren;
             }
-            else if (select[0].value == "Professoren") {
-                themeInt = ["Müller", "Frieß", "Schäfer-Schöntal", "Aichele", "Dell'Oro", "Reusch", "Friess", "Krach",];
-                cardsInterface = {
-                    color: "red",
-                    theme: themeInt,
-                    font: "arial",
-                    size: "3",
-                };
+            else if (select[0].value == "2") {
+                Aufgabe4.cardsInterface = Aufgabe4.cardsDeckBuchstaben;
             }
             ;
         }
-        console.log(cardsInterface);
+        console.log(Aufgabe4.cardsInterface);
         pushCards();
         createCards();
         CreatePlayers();
@@ -125,8 +116,8 @@ var Aufgabe4;
         let c = 0;
         let content = 0;
         while (c <= numCards - 1) {
-            cards.push(themeInt[c]);
-            cards.push(themeInt[c]);
+            cards.push(Aufgabe4.cardsInterface.theme[c]);
+            cards.push(Aufgabe4.cardsInterface.theme[c]);
             c++;
         }
     }
