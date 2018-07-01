@@ -1,9 +1,9 @@
 namespace Aufgabe11 {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
-    let nfish: Fish[] = [];
-    let flakes: Flake[] = [];
-    let bubbles: Bubble[] = [];
+  //  let nfish: Fish[] = [];
+  //  let flakes: Flake[] = [];
+  //  let bubbles: Bubble[] = [];
     let movingObjects: MovingObjects[] = [];    
     let n: number = 12;
  //   let nBubbles: number = 20;

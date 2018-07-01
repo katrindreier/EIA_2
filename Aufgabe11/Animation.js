@@ -1,9 +1,9 @@
 var Aufgabe11;
 (function (Aufgabe11) {
     window.addEventListener("load", init);
-    let nfish = [];
-    let flakes = [];
-    let bubbles = [];
+    //  let nfish: Fish[] = [];
+    //  let flakes: Flake[] = [];
+    //  let bubbles: Bubble[] = [];
     let movingObjects = [];
     let n = 12;
     //   let nBubbles: number = 20;
