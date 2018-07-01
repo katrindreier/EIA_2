@@ -45,86 +45,7 @@ namespace Aufgabe11 {
         }
         drawBox(xBox, treasure); 
         
-        imagedata = crc2.getImageData(0, 0, canvas.width, canvas.height);
-        
-        //Bubbles
-        for (let i: number = 0; i < 20; i++) {
-            let bX: number = Math.random() * crc2.canvas.width;
-            let bY: number = Math.random() * crc2.canvas.height;
-            let bubble: Bubble = new Bubble(bX, bY);
-           // let radius: number;
-            bubble.radius = Math.random() * 20;
-           // bubble.x = Math.random() * crc2.canvas.width;
-           // bubble.y = Math.random() * crc2.canvas.height;
-           
-            bubbles.push(bubble);
-            
-        }
-        
-        
-       // Fish
-        for (let i: number = 0; i < n; i++) {
-        let fiX: number = Math.random() * crc2.canvas.width;
-        let fiY: number = Math.random() * crc2.canvas.height;
-        let fish: Fish = new Fish(fiX, fiY);   
-        nfish.push(fish);
-            
-        let num: number = Math.random();
-        if (num <= 0.3) {
-            fish.color = "#ffcefa";
-        }
-        else if (num <= 0.6 && num >= 0.3) {
-            fish.color = "#96efff";
-        } 
-        else {
-            fish.color = "#ffc272";    
-        }
-    
-      
-            
-        }
-
-        animate();
-    }
-
-    //Flake beim Klick
-    function insertNewObject(_event: MouseEvent): void {            
-           console.log ("click");
-           let fx: number = _event.pageX;
-           let fy: number = _event.pageY;
-           let flake: Flake = new Flake(fx, fy);
-         //  flake.x = _event.pageX;
-         //  flake.y = _event.pageY;
-    
-           flakes.push(flake);
-     
-    } 
-    
-    function animate(): void {
-        window.setTimeout(animate, 15);
-
-        crc2.putImageData(imagedata, 0, 0);
-        
-        moveObjects();
-        drawObjects();
-    }
-
-    function moveObjects(): void {
-        for (let i: number = 0; i < movingObjects.length; i++) {
-            movingObjects[i].move();            
-        }
-        
-    }
-
-    function drawObjects(): void {
-        for (let i: number = 0; i < movingObjects.length; i++) {
-            movingObjects[i].draw();
-        }
-       
-    }
-
-    
-    function drawBackground(): void {
+        function drawBackground(): void {
     //Meer
     crc2.fillStyle = "#65b0d3";       //Füllfarbe
     crc2.fillRect(0, 10, crc2.canvas.width, crc2.canvas.height * 0.8);             //Quadrat
@@ -133,14 +54,14 @@ namespace Aufgabe11 {
     crc2.fillRect(0, crc2.canvas.height * 0.8, crc2.canvas.width, crc2.canvas.height * 0.2);             //Quadrat    
     } 
     
-   function drawAlge(xrandomAlge: number): void {
-     crc2.strokeStyle = "#a4f9a4";
-     crc2.lineWidth = 5; 
-     crc2.beginPath();
-     crc2.moveTo(xrandomAlge, crc2.canvas.height * 0.8);
-     crc2.bezierCurveTo(xrandomAlge, crc2.canvas.height * 0.8, xrandomAlge + 10 , crc2.canvas.height * 0.75, xrandomAlge, crc2.canvas.height * 0.7);
-     crc2.bezierCurveTo(xrandomAlge, crc2.canvas.height * 0.7, xrandomAlge - 10, crc2.canvas.height * 0.65, xrandomAlge, crc2.canvas.height * 0.6);         
-     crc2.stroke();
+    function drawAlge(xrandomAlge: number): void {
+    crc2.strokeStyle = "#a4f9a4";
+    crc2.lineWidth = 5; 
+    crc2.beginPath();
+    crc2.moveTo(xrandomAlge, crc2.canvas.height * 0.8);
+    crc2.bezierCurveTo(xrandomAlge, crc2.canvas.height * 0.8, xrandomAlge + 10 , crc2.canvas.height * 0.75, xrandomAlge, crc2.canvas.height * 0.7);
+    crc2.bezierCurveTo(xrandomAlge, crc2.canvas.height * 0.7, xrandomAlge - 10, crc2.canvas.height * 0.65, xrandomAlge, crc2.canvas.height * 0.6);         
+    crc2.stroke();
     }
     
     function drawSand(xSand: number, ySand: number, radius: number): void {
@@ -231,6 +152,87 @@ namespace Aufgabe11 {
        crc2.fill();
        }   
     }
+        
+        imagedata = crc2.getImageData(0, 0, canvas.width, canvas.height);
+        
+        //Bubbles
+        for (let i: number = 0; i < 20; i++) {
+            let bX: number = Math.random() * crc2.canvas.width;
+            let bY: number = Math.random() * crc2.canvas.height;
+            let bubble: Bubble = new Bubble(bX, bY);
+           // let radius: number;
+            bubble.radius = Math.random() * 20;
+           // bubble.x = Math.random() * crc2.canvas.width;
+           // bubble.y = Math.random() * crc2.canvas.height;
+           
+            movingObjects.push(bubble);
+            
+        }
+        
+        
+       // Fish
+        for (let i: number = 0; i < n; i++) {
+        let fiX: number = Math.random() * crc2.canvas.width;
+        let fiY: number = Math.random() * crc2.canvas.height;
+        let fish: Fish = new Fish(fiX, fiY);   
+        movingObjects.push(fish);
+            
+        let num: number = Math.random();
+        if (num <= 0.3) {
+            fish.color = "#ffcefa";
+        }
+        else if (num <= 0.6 && num >= 0.3) {
+            fish.color = "#96efff";
+        } 
+        else {
+            fish.color = "#ffc272";    
+        }
+    
+      
+            
+        }
+
+        animate();
+    }
+
+    //Flake beim Klick
+    function insertNewObject(_event: MouseEvent): void {            
+           console.log ("click");
+           let fx: number = _event.pageX;
+           let fy: number = _event.pageY;
+           let flake: Flake = new Flake(fx, fy);
+         //  flake.x = _event.pageX;
+         //  flake.y = _event.pageY;
+           
+           movingObjects.push(flake);
+     
+    } 
+    
+    function animate(): void {
+        window.setTimeout(animate, 15);
+
+        crc2.putImageData(imagedata, 0, 0);
+        
+        moveObjects();
+        drawObjects();
+    }
+
+    function moveObjects(): void {
+        for (let i: number = 0; i < movingObjects.length; i++) {
+            movingObjects[i].move();            
+        }
+        
+    }
+
+    function drawObjects(): void {
+        for (let i: number = 0; i < movingObjects.length; i++) {
+            movingObjects[i].draw();
+        }
+       
+    }
+
+    
+    
     
 
 }
