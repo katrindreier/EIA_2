@@ -5,3 +5,22 @@
     width: 300px;
     display: none;
      }
+     
+#Dirt { 
+	width: 10px;
+   display: none;
+     }
+     
+     
+#Stone { 
+   display: none;
+     }
+     
+#Straw { 
+	width: 10px;
+   display: none;
+     }
+#Fly { 
+	width: 10px;
+   display: none;
+     }

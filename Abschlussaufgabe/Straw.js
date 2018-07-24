@@ -5,11 +5,8 @@ var Abschlussaufgabe;
             super(_x, _y);
         }
         draw() {
-            Abschlussaufgabe.crc2.fillStyle = "yellow";
-            Abschlussaufgabe.crc2.beginPath();
-            Abschlussaufgabe.crc2.arc(this.x, this.y, 7, 0, Math.PI * 2, true);
-            Abschlussaufgabe.crc2.closePath();
-            Abschlussaufgabe.crc2.fill();
+            let straw = document.getElementById("Straw");
+            Abschlussaufgabe.crc2.drawImage(straw, this.x, this.y, 30, 30);
         }
     }
     Abschlussaufgabe.Straw = Straw;
