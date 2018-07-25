@@ -17,10 +17,12 @@
      }
      
 #Straw { 
-	width: 10px;
    display: none;
      }
 #Fly { 
-	width: 10px;
+
+   display: none;
+     }
+#Background { 
    display: none;
      }
