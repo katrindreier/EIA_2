@@ -78,12 +78,16 @@ namespace Abschlussaufgabe {
  
     function drawBackground (): void {
      //Himmel
-        crc2.fillStyle = "#65b0d3";       //Füllfarbe
+       /* crc2.fillStyle = "#65b0d3";       //Füllfarbe
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height * 0.8);             //Quadrat
        
         //Wiese
         crc2.fillStyle = "#33cc33";       //Füllfarbe
         crc2.fillRect(0, crc2.canvas.height * 0.8, crc2.canvas.width, crc2.canvas.height * 0.2); 
+        */
+        let background: HTMLImageElement = <HTMLImageElement>document.getElementById("Background");
+        crc2.drawImage(background, 0, 0, 852, 568);        
+        
         
         //Schweinchen
         let schwein: HTMLImageElement = <HTMLImageElement>document.getElementById("Schwein");

@@ -52,11 +52,15 @@ var Abschlussaufgabe;
     }
     function drawBackground() {
         //Himmel
-        Abschlussaufgabe.crc2.fillStyle = "#65b0d3"; //Füllfarbe
-        Abschlussaufgabe.crc2.fillRect(0, 0, Abschlussaufgabe.crc2.canvas.width, Abschlussaufgabe.crc2.canvas.height * 0.8); //Quadrat
-        //Wiese
-        Abschlussaufgabe.crc2.fillStyle = "#33cc33"; //Füllfarbe
-        Abschlussaufgabe.crc2.fillRect(0, Abschlussaufgabe.crc2.canvas.height * 0.8, Abschlussaufgabe.crc2.canvas.width, Abschlussaufgabe.crc2.canvas.height * 0.2);
+        /* crc2.fillStyle = "#65b0d3";       //Füllfarbe
+         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height * 0.8);             //Quadrat
+        
+         //Wiese
+         crc2.fillStyle = "#33cc33";       //Füllfarbe
+         crc2.fillRect(0, crc2.canvas.height * 0.8, crc2.canvas.width, crc2.canvas.height * 0.2);
+         */
+        let background = document.getElementById("Background");
+        Abschlussaufgabe.crc2.drawImage(background, 0, 0, 852, 568);
         //Schweinchen
         let schwein = document.getElementById("Schwein");
         Abschlussaufgabe.crc2.drawImage(schwein, 0, Abschlussaufgabe.crc2.canvas.height * 0.4, 280, 380);
